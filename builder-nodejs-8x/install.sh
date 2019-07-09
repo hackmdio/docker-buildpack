@@ -58,7 +58,7 @@ mv google-cloud-sdk /usr/bin/
 gcloud components install docker-credential-gcr
 
 # jx-release-version
-RUN curl -f -o ./jx-release-version -L https://github.com/jenkins-x/jx-release-version/releases/download/v${JX_RELEASE_VERSION}/jx-release-version-linux && \
+curl -f -o ./jx-release-version -L https://github.com/jenkins-x/jx-release-version/releases/download/v${JX_RELEASE_VERSION}/jx-release-version-linux && \
   mv jx-release-version /usr/bin/ && \
   chmod +x /usr/bin/jx-release-version
 

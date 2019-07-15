@@ -1,4 +1,4 @@
-FROM debian:9
+FROM buildpack-deps:stretch
 
 WORKDIR /home/jenkins
 

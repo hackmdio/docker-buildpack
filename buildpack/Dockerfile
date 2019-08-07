@@ -11,11 +11,13 @@ RUN set -x && \
         apt-get update && \
         apt-get install -y --no-install-recommends postgresql-client-9.6 && \
         rm -rf /var/lib/apt/lists/* && \
+        # upgrade npm to 6.10
+        npm i -g npm@6.10.3 && \
         # install node-prune
         npm i -g node-prune && npm cache clean --force && \
         # setup github ssh key
         mkdir -p /root/.ssh && \
-        ssh-keyscan -H github.com >> ~/.ssh/known_hosts && \
+        ssh-keyscan -H github.com >> /root/.ssh/known_hosts && \
         # setup git credential helper
         mkdir -p /root/git && \
         git config --global credential.helper 'store --file /root/git/credentials'

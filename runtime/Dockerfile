@@ -40,7 +40,7 @@ RUN fc-cache -f -v && \
         dpkg-reconfigure fontconfig
 
 USER hackmd
-RUN npm install -g sequelize-cli
+RUN npm install -g sequelize-cli npm@6.10.3
 
 WORKDIR /home/$USER_NAME/app
 

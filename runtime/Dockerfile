@@ -35,7 +35,7 @@ RUN set -xe && \
         mkdir -p /home/$USER_NAME/app && \
         # adjust permission
         chown -R $USER_NAME:$USER_NAME /home/$USER_NAME && \
-        su - hackmd -c "npm install -g sequelize-cli@4.1.1 sequelize@4.13.11  npm@6.10.3 && npm cache clean --force" && \
+        su - hackmd -c "npm install -g sequelize-cli@4.1.1 sequelize@4.13.11  npm@6.10.3 pg@6.4.2 && npm cache clean --force" && \
         fc-cache -f -v && \
         dpkg-reconfigure fontconfig-config && \
         dpkg-reconfigure fontconfig

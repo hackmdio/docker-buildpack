@@ -1,7 +1,6 @@
-FROM node:8.16.0-jessie
+FROM node:8.16.2-jessie
 
 ENV DEBIAN_VERSION_NAME=jessie NODE_ENV=production
-ENV NODE_ENV production
 
 ARG USER_NAME=hackmd
 ARG UID=1500
@@ -39,8 +38,6 @@ RUN set -xe && \
         fc-cache -f -v && \
         dpkg-reconfigure fontconfig-config && \
         dpkg-reconfigure fontconfig
-
-#RUN npm install -g sequelize-cli@4.1.1 sequelize@4.13.11  npm@6.10.3
 
 USER hackmd
 ENV PATH="/home/hackmd/.npm/bin:$PATH"

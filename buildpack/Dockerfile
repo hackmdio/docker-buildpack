@@ -1,4 +1,4 @@
-FROM node:8.16.0-jessie
+FROM node:8.16.2-jessie
 
 ENV DEBIAN_VERSION_NAME jessie
 

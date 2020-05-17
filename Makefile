@@ -14,4 +14,4 @@ runtime-10:
 	./build.sh runtime-10 runtime node-10
 
 runtime-10-cjk:
-	./build.sh runtime-10 runtime node-10 Dockerfile-cjk
+	./build.sh runtime-10 runtime node-10-cjk Dockerfile-cjk

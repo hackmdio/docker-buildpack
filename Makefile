@@ -8,7 +8,7 @@ buildpack-10:
 	./build.sh buildpack-10 buildpack 8
 
 runtime:
-	./build.sh runtime runtime
+	./build.sh runtime runtime 8
 
 runtime-10:
 	./build.sh runtime-10 runtime 10

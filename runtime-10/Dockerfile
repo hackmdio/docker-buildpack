@@ -17,7 +17,7 @@ RUN set -xe && \
         rm -rf /var/lib/apt/lists/* && \
         # install pchecker
         wget https://github.com/hackmdio/portchecker/releases/download/v1.0.5/portchecker-linux-amd64.tar.gz && \
-        tar xvf portchec    ker-linux-amd64.tar.gz -C /usr/local/bin && \
+        tar xvf portchecker-linux-amd64.tar.gz -C /usr/local/bin && \
         mv /usr/local/bin/portchecker-linux-amd64 /usr/local/bin/pcheck && \
         rm portchecker-linux-amd64.tar.gz && \
         # Add user and groupd

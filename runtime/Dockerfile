@@ -6,10 +6,10 @@ ARG USER_NAME=hackmd
 ARG UID=1500
 ARG GID=1500
 
-ADD fonts/*.otf /usr/share/fonts/opentype/noto/
-ADD fonts/*.ttf /usr/share/fonts/truetype/noto/
+ADD common/fonts/*.otf /usr/share/fonts/opentype/noto/
+ADD common/fonts/*.ttf /usr/share/fonts/truetype/noto/
 # add font conf for fonts orders
-ADD local.conf /etc/fonts/
+ADD common/local.conf /etc/fonts/
 
 RUN set -xe && \
         apt-get update && \

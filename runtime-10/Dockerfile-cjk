@@ -1,6 +1,7 @@
 FROM node:10.20.1-buster-slim
 
 ENV DEBIAN_VERSION_NAME=buster NODE_ENV=production
+ENV OPENSSL_CONF=/etc/ssl/
 
 ARG USER_NAME=hackmd
 ARG UID=1500
@@ -14,7 +15,7 @@ ADD common/local.conf /etc/fonts/
 RUN set -xe && \
         apt-get update && \
         # install postgres client
-        apt-get install -y --no-install-recommends apt-transport-https wget gnupg2 git bzip2 ca-certificates fontconfig && \
+        apt-get install -y --no-install-recommends apt-transport-https wget gnupg2 git bzip2 ca-certificates fontconfig libfontconfig && \
         echo "deb http://apt.postgresql.org/pub/repos/apt/ ${DEBIAN_VERSION_NAME}-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
         wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
         apt-get update && \

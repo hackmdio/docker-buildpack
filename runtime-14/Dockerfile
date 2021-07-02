@@ -1,6 +1,6 @@
 FROM node:14.17.2-buster
 
-ENV DEBIAN_VERSION_NAME=jessie NODE_ENV=production
+ENV DEBIAN_VERSION_NAME=buster NODE_ENV=production
 
 ARG USER_NAME=hackmd
 ARG UID=1500

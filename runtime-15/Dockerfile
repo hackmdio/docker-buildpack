@@ -1,6 +1,7 @@
 FROM node:15.12.0-buster
 
 ENV DEBIAN_VERSION_NAME=jessie NODE_ENV=production
+ENV PORTCHECKER_VERSION=v1.1.0
 
 ARG USER_NAME=hackmd
 ARG UID=1500
@@ -21,10 +22,10 @@ RUN set -xe && \
         apt-get install -y --no-install-recommends postgresql-client-11 && \
         rm -rf /var/lib/apt/lists/* && \
         # install pchecker
-        wget https://github.com/hackmdio/portchecker/releases/download/v1.0.5/portchecker-linux-amd64.tar.gz && \
-        tar xvf portchecker-linux-amd64.tar.gz -C /usr/local/bin && \
-        mv /usr/local/bin/portchecker-linux-amd64 /usr/local/bin/pcheck && \
-        rm portchecker-linux-amd64.tar.gz && \
+        wget https://github.com/hackmdio/portchecker/releases/download/${PORTCHECKER_VERSION}/portchecker-linux-$(dpkg --print-architecture).tar.gz && \
+        tar xvf portchecker-linux-$(dpkg --print-architecture).tar.gz -C /usr/local/bin && \
+        mv /usr/local/bin/portchecker-linux-$(dpkg --print-architecture) /usr/local/bin/pcheck && \
+        rm portchecker-linux-$(dpkg --print-architecture).tar.gz && \
         # Add user and groupd
         groupadd --gid $GID $USER_NAME && \
         useradd --uid $UID --gid $USER_NAME --no-log-init --create-home $USER_NAME && \

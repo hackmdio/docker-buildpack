@@ -14,6 +14,7 @@ RUN set -xe && \
         wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
         apt-get update && \
         apt-get install -y --no-install-recommends postgresql-client-12 && \
+        if [ $(dpkg --print-architecture) = "arm64" ];then apt-get install -y --no-install-recommends phantomjs; fi && \
         rm -rf /var/lib/apt/lists/* && \
         # install node-prune
         npm install -g node-prune && npm cache clean --force && \

@@ -14,6 +14,7 @@ RUN set -xe && \
         wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
         apt-get update && \
         apt-get install -y --no-install-recommends postgresql-client-11 && \
+        if [ $(dpkg --print-architecture) = "arm64" ];then apt-get install -y --no-install-recommends phantomjs; fi && \
         rm -rf /var/lib/apt/lists/* && \
         # upgrade npm to 6.10
         npm i -g npm@7.8.0 && npm cache clean --force && \

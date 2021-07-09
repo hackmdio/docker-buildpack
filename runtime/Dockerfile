@@ -16,7 +16,7 @@ RUN set -xe && \
         apt-get update && \
         # install postgres client
         apt-get install -y --no-install-recommends apt-transport-https && \
-        echo "deb http://apt.postgresql.org/pub/repos/apt/ ${DEBIAN_VERSION_NAME}-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
+        echo "deb http://apt-archive.postgresql.org/pub/repos/apt/ ${DEBIAN_VERSION_NAME}-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
         wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
         apt-get update && \
         apt-get install -y --no-install-recommends postgresql-client-9.6 && \

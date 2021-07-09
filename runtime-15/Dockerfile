@@ -1,6 +1,6 @@
 FROM node:15.14.0-buster
 
-ENV DEBIAN_VERSION_NAME=jessie NODE_ENV=production
+ENV DEBIAN_VERSION_NAME=buster NODE_ENV=production
 ENV PORTCHECKER_VERSION=v1.1.0
 
 ARG USER_NAME=hackmd

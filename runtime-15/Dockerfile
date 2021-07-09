@@ -1,4 +1,4 @@
-FROM node:15.12.0-buster
+FROM node:15.14.0-buster
 
 ENV DEBIAN_VERSION_NAME=jessie NODE_ENV=production
 ENV PORTCHECKER_VERSION=v1.1.0

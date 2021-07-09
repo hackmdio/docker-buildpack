@@ -1,4 +1,4 @@
-FROM node:10.20.1-buster-slim
+FROM node:10.24.1-buster-slim
 
 ENV DEBIAN_VERSION_NAME=buster NODE_ENV=production
 ENV OPENSSL_CONF=/etc/ssl/

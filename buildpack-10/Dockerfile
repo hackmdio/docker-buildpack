@@ -1,4 +1,4 @@
-FROM node:10.20.1-buster
+FROM node:10.24.1-buster
 
 ENV DEBIAN_VERSION_NAME buster
 

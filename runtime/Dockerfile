@@ -1,4 +1,4 @@
-FROM node:8.16.2-jessie
+FROM node:8.17.0-jessie
 # WARNING this version can't support arm64
 
 ENV DEBIAN_VERSION_NAME=jessie NODE_ENV=production

@@ -1,4 +1,4 @@
-FROM node:14.17.2-buster
+FROM node:14.17.6-buster
 
 ENV DEBIAN_VERSION_NAME buster
 
@@ -16,8 +16,8 @@ RUN set -xe && \
         apt-get install -y --no-install-recommends postgresql-client-11 && \
         if [ $(dpkg --print-architecture) = "arm64" ];then apt-get install -y --no-install-recommends phantomjs; fi && \
         rm -rf /var/lib/apt/lists/* && \
-        # upgrade npm to 6.10
-        npm i -g npm@7.8.0 && npm cache clean --force && \
+        # upgrade npm to 7.22.0
+        npm i -g npm@7.22.0 && npm cache clean --force && \
         # Add user and groupd
         groupadd --gid $GID $USER_NAME && \
         useradd --uid $UID --gid $USER_NAME --no-log-init --create-home $USER_NAME && \

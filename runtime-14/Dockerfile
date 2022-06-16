@@ -1,4 +1,4 @@
-FROM node:14.18.3-buster
+FROM node:14.19.3-buster
 
 ENV DEBIAN_VERSION_NAME=buster NODE_ENV=production
 ENV PORTCHECKER_VERSION=v1.1.0
@@ -32,8 +32,8 @@ RUN set -xe && \
         useradd --uid $UID --gid $USER_NAME --no-log-init --create-home $USER_NAME && \
         mkdir /home/$USER_NAME/.npm && \
         echo "prefix=/home/$USER_NAME/.npm/" > /home/$USER_NAME/.npmrc && \
-        # upgrade npm to 7.22.0
-        npm install -g npm@7.22.0 && npm cache clean --force && \
+        # upgrade npm to 7.24.2
+        npm install -g npm@7.24.2 && npm cache clean --force && \
         # setup app dir
         mkdir -p /home/$USER_NAME/app && \
         # adjust permission

@@ -1,4 +1,4 @@
-FROM node:14.19.3-buster
+FROM node:14.21.1-buster
 
 ENV DEBIAN_VERSION_NAME=buster NODE_ENV=production
 ENV PORTCHECKER_VERSION=v1.1.0

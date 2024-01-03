@@ -1,6 +1,6 @@
-FROM node:16.20.2-bookworm
+FROM node:16.20.2-buster
 
-ENV DEBIAN_VERSION_NAME=bookworm NODE_ENV=production
+ENV DEBIAN_VERSION_NAME=buster NODE_ENV=production
 ENV PORTCHECKER_VERSION=v1.1.0
 
 ARG USER_NAME=hackmd
@@ -20,6 +20,7 @@ RUN set -xe && \
         wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
         apt-get update && \
         apt-get install -y --no-install-recommends postgresql-client-11 && \
+        if [ $(dpkg --print-architecture) = "arm64" ];then apt-get install -y --no-install-recommends phantomjs; fi && \
         rm -rf /var/lib/apt/lists/* && \
         # install pchecker
         wget https://github.com/hackmdio/portchecker/releases/download/${PORTCHECKER_VERSION}/portchecker-linux-$(dpkg --print-architecture).tar.gz && \

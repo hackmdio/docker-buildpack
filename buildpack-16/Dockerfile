@@ -1,6 +1,6 @@
-FROM node:16.20.2-bookworm
+FROM node:16.20.2-buster
 
-ENV DEBIAN_VERSION_NAME bookworm
+ENV DEBIAN_VERSION_NAME buster
 
 ARG USER_NAME=hackmd
 ARG UID=1500
@@ -14,6 +14,7 @@ RUN set -xe && \
         wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
         apt-get update && \
         apt-get install -y --no-install-recommends postgresql-client-11 && \
+        if [ $(dpkg --print-architecture) = "arm64" ];then apt-get install -y --no-install-recommends phantomjs; fi && \
         rm -rf /var/lib/apt/lists/* && \
         # install node-prune
         npm i -g node-prune && npm cache clean --force && \

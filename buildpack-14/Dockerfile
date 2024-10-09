@@ -1,6 +1,6 @@
-FROM node:14.21.2-buster
+FROM node:14.21.3-bullseye
 
-ENV DEBIAN_VERSION_NAME buster
+ENV DEBIAN_VERSION_NAME bullseye
 
 ARG USER_NAME=hackmd
 ARG UID=1500
@@ -8,13 +8,16 @@ ARG GID=1500
 
 RUN set -xe && \
         apt-get update && \
+        # Upgrade system
+        apt-get upgrade -y && \
+        apt-get dist-upgrade -y && \
         # install postgres client
         apt-get install -y --no-install-recommends apt-transport-https && \
         echo "deb http://apt.postgresql.org/pub/repos/apt/ ${DEBIAN_VERSION_NAME}-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
         wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
         apt-get update && \
         apt-get install -y --no-install-recommends postgresql-client-11 && \
-        if [ $(dpkg --print-architecture) = "arm64" ];then apt-get install -y --no-install-recommends phantomjs; fi && \
+        # if [ $(dpkg --print-architecture) = "arm64" ];then apt-get install -y --no-install-recommends phantomjs; fi && \
         rm -rf /var/lib/apt/lists/* && \
         # upgrade npm to 7.24.2
         npm i -g npm@7.24.2 && npm cache clean --force && \

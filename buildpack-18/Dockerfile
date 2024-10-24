@@ -1,4 +1,4 @@
-FROM node:18.16.0-bullseye
+FROM node:18.20.4-bullseye
 
 ENV DEBIAN_VERSION_NAME bullseye
 

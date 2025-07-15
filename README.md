@@ -20,8 +20,6 @@ Example parameters:
 
 **Prerequisites**: Set up `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` secrets in your GitHub repository.
 
-**Note**: The workflow currently uses QEMU emulation on ubuntu-latest runners. For true native builds, change the ARM64 runner to `ubuntu-latest-arm64` if available in your GitHub account.
-
 ### Manual Native Build Process
 
 ```bash

@@ -6,14 +6,17 @@ on:
       docker_dir:
         description: 'Docker directory (e.g., runtime-18.15)'
         required: true
+        default: 'runtime-18.15'
         type: string
       image_name:
         description: 'Docker image name (e.g., runtime)'
         required: true
+        default: 'runtime'
         type: string
       tag_prefix:
         description: 'Tag prefix (e.g., 18.15.0)'
         required: true
+        default: '18.15.0'
         type: string
       dockerfile:
         description: 'Dockerfile name (default: Dockerfile)'

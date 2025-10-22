@@ -1,39 +1,32 @@
-FROM node:18.16.0-bullseye
+FROM node:18.20.8-bookworm
 
-ENV DEBIAN_VERSION_NAME bullseye
+ENV DEBIAN_VERSION_NAME=bookworm
 
 ARG USER_NAME=hackmd
 ARG UID=1500
 ARG GID=1500
 
 RUN set -xe && \
+        # upgrade system
         apt-get update && \
+        apt-get upgrade -y && \
         # install postgres client
-        apt-get install -y --no-install-recommends apt-transport-https && \
-        echo "deb http://apt.postgresql.org/pub/repos/apt/ ${DEBIAN_VERSION_NAME}-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
-        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
-        apt-get update && \
-        apt-get install -y --no-install-recommends postgresql-client-11 && \
-        if [ $(dpkg --print-architecture) = "arm64" ];then apt-get install -y --no-install-recommends phantomjs; fi && \
+        apt-get install -y --no-install-recommends postgresql-client-15 && \
         rm -rf /var/lib/apt/lists/* && \
-        # upgrade npm to 6.10
-        npm i -g npm@9.6.0 && \
+        # upgrade npm to v10
+        npm -g install npm@10 && \
         # install node-prune
         npm i -g node-prune && npm cache clean --force && \
         # Add user and groupd
         groupadd --gid $GID $USER_NAME && \
         useradd --uid $UID --gid $USER_NAME --no-log-init --create-home $USER_NAME && \
-        mkdir /home/$USER_NAME/.npm && \
-        echo "prefix=/home/$USER_NAME/.npm/" > /home/$USER_NAME/.npmrc && \
-        # setup github ssh key
-        mkdir -p /home/hackmd/.ssh && \
-        # ssh-keyscan -H github.com >> /home/hackmd/.ssh/known_hosts && \
-        # setup git credential helper
-        mkdir -p /home/hackmd/git && \
-        git config --global credential.helper 'store --file /home/$USER_NAME/git/credentials' && \
-        # setup app dir
+        mkdir -p /home/$USER_NAME/.npm && \
+        mkdir -p /home/$USER_NAME/.ssh && \
+        mkdir -p /home/$USER_NAME/git && \
         mkdir -p /home/$USER_NAME/app && \
-        # adjust permission
+        echo "prefix=/home/$USER_NAME/.npm/" > /home/$USER_NAME/.npmrc && \
+        git config --global credential.helper 'store --file /home/$USER_NAME/git/credentials' && \
+        # adjust permissions
         chown -R $USER_NAME:$USER_NAME /home/$USER_NAME
 
 USER hackmd

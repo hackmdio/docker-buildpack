@@ -1,4 +1,4 @@
-FROM node:24.11.0-bookworm
+FROM node:24.14.0-bookworm
 
 ENV DEBIAN_VERSION_NAME=bookworm
 

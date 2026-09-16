@@ -3,7 +3,8 @@
 ### Using Docker Buildx (Cross-platform emulation)
 
 ```bash
-./build-multi-arch.sh runtime-16 runtime 16.20.2
+./build-multi-arch.sh runtime-26 runtime 26.8.2
+./build-multi-arch.sh buildpack-26 buildpack 26.8.2
 ./build-multi-arch.sh runtime-18.15 runtime 18.15.0
 ./build-multi-arch.sh buildpack-18.15 buildpack 18.15.0
 ```
